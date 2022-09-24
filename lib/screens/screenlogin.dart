@@ -23,72 +23,74 @@ class _screenloginState extends State<screenlogin> {
       body: SafeArea(
         child: Form(
           key: _formkey,
-          child: Column(
-            children: [
-              const Padding(
-                padding: EdgeInsets.only(right: 50),
-              ),
-              Image.asset(
-                "assets/flutter logo1.jpg",
-                height: 300,
-                width: 300,
-              ),
-              TextFormField(
-                controller: _usernamecontroller,
-                obscureText: true,
-                decoration: InputDecoration(
-                  hintText: "username",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                const Padding(
+                  padding: EdgeInsets.only(right: 50),
                 ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return "value is empty";
-                  } else {
-                    return null;
-                  }
-                },
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              TextFormField(
-                controller: _passwordcontoller,
-                obscureText: true,
-                decoration: InputDecoration(
-                  hintText: "password",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
+                Image.asset(
+                  "assets/flutter logo1.jpg",
+                  height: 300,
+                  width: 300,
                 ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return "value is empty";
-                  } else {
-                    return null;
-                  }
-                },
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Visibility(
-                    visible: !_isdatamatched,
-                    child: Text("username password doesnt match"),
+                TextFormField(
+                  controller: _usernamecontroller,
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    hintText: "username",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
                   ),
-                  ElevatedButton(
-                      onPressed: () {
-                        if (_formkey.currentState!.validate()) {
-                          checklogin(context);
-                        } else {
-                          print("doesnt match");
-                        }
-                      },
-                      child: Text("login"))
-                ],
-              ),
-            ],
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return "value is empty";
+                    } else {
+                      return null;
+                    }
+                  },
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                TextFormField(
+                  controller: _passwordcontoller,
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    hintText: "password",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return "value is empty";
+                    } else {
+                      return null;
+                    }
+                  },
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Visibility(
+                      visible: !_isdatamatched,
+                      child: Text("username password doesnt match"),
+                    ),
+                    ElevatedButton(
+                        onPressed: () {
+                          if (_formkey.currentState!.validate()) {
+                            checklogin(context);
+                          } else {
+                            print("doesnt match");
+                          }
+                        },
+                        child: Text("login"))
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
